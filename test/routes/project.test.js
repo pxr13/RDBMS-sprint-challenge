@@ -48,6 +48,7 @@ describe('Project', () => {
   describe('GET /api/projects/:id', () => {
     const validRoute = '/api/projects/1';
     const invalidRoute = '/api/projects/32';
+
     it('should return project with given id', async () => {
       const res = await getReq(validRoute);
 
@@ -56,6 +57,14 @@ describe('Project', () => {
       expect(res.body.name).to.equal(seedData.name);
       expect(res.body.description).to.equal(seedData.description);
       expect(res.body.is_complete).to.equal(seedData.is_complete);
+      expect(res.body.actions).to.have.length(4);
+      expect(res.body.actions[0]).to.have.property('id');
+      expect(res.body.actions[0]).to.have.property('notes');
+      expect(res.body.actions[0]).to.have.property('description');
+      expect(res.body.actions[0].project_id).to.be.undefined;
+      expect(res.body.contexts).to.have.length(2);
+      expect(res.body.contexts[0]).to.have.property('id');
+      expect(res.body.contexts[0]).to.have.property('context');
     });
 
     it('should return an error message when given an invalid id', async () => {

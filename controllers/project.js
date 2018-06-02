@@ -8,14 +8,14 @@ const getAllProjects = async (req, res) => {
 };
 
 const getProjectById = async (req, res) => {
-  const [project] = await query.getProjectById(req.params.id);
+  const projectData = await query.getFullProjectDataById(req.params.id);
 
-  if (project) {
-    res.send(project);
+  if (!projectData.actions.length) {
+    res.status(code.USER_ERROR).send({ error: true, message: 'Must provide a valid project ID.' });
     return;
   }
 
-  res.status(code.USER_ERROR).send({ error: true, message: 'Must provide a valid project ID.' });
+  res.send(projectData);
 };
 
 const createProject = async (req, res) => {

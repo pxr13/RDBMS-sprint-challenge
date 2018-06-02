@@ -43,6 +43,22 @@ exports.seed = (knex, Promise) =>
                 notes: 'Read the docs. Watch some videos.',
               },
               {
+                project_id: visualizerProject,
+                description: 'Create tests for algorithms.',
+                notes: 'Use your algorithms git repo.',
+              },
+              {
+                project_id: visualizerProject,
+                description: 'Make it functional.',
+                notes:
+                  'A beginner should understand how the algorithm works by watching the visualizer.',
+              },
+              {
+                project_id: visualizerProject,
+                description: 'Make it look sweet!',
+                notes: 'Nice CSS and animations.',
+              },
+              {
                 project_id: productivityProject,
                 description: 'Brainstorm features.',
                 notes: 'Heavy on front-end stuff like React.',
