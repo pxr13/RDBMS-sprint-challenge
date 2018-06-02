@@ -5,6 +5,7 @@ let context;
 exports.seed = (knex, Promise) =>
   knex('action_context')
     .del()
+    .then(() => knex('action_context').del())
     .then(() => knex('project_context').del())
     .then(() => knex('action').del())
     .then(() => knex('context').del())
@@ -84,6 +85,6 @@ exports.seed = (knex, Promise) =>
             { action_id: action[2], context_id: context[2] },
           ]),
         )
-        .then(() => console.log('Seeding complete!'))
+        .then()
         .catch(err => console.log(`Error => ${err}`)),
     );

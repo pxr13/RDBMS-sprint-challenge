@@ -8,18 +8,20 @@ const app = require('../');
 chai.use(chaiHttp);
 const expect = chai.expect;
 
-const testReqUtil = method => (route, id = '', data = {}) =>
+const testReqUtil = method => (route, data = {}) =>
   chai
     .request(app)
-    [method](`${route}/${id}`)
+    [method](`${route}`)
     .send(data);
 
 const postReq = testReqUtil('post');
 const deleteReq = testReqUtil('delete');
 const getReq = testReqUtil('get');
+const putReq = testReqUtil('put');
 
 module.exports = {
   postReq,
   deleteReq,
   getReq,
+  putReq,
 };

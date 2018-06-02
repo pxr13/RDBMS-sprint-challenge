@@ -40,8 +40,9 @@ exports.up = (knex, Promise) =>
 
 exports.down = (knex, Promise) =>
   Promise.all([
-    knex.schema.dropTable('users'),
-    knex.schema.dropTable('post_tags'),
-    knex.schema.dropTable('tags'),
-    knex.schema.dropTable('posts'),
+    knex.schema.dropTable('action_context'),
+    knex.schema.dropTable('project_context'),
+    knex.schema.dropTable('action'),
+    knex.schema.dropTable('context'),
+    knex.schema.dropTable('project'),
   ]);
